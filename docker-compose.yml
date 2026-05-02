@@ -1,0 +1,55 @@
+services: 
+  db: 
+    image: mariadb:10.6 
+    container_name: hotcrp_db 
+    restart: always 
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} 
+      MYSQL_DATABASE: ${DB_NAME} 
+      MYSQL_USER: ${DB_USER} 
+      MYSQL_PASSWORD: ${DB_PASS} 
+    volumes: 
+      - db_data:/var/lib/mysql 
+      - ./docker/mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf 
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks: 
+      - hotcrp_net 
+  
+  hotcrp: 
+    build: 
+      context: . 
+      dockerfile: docker/php/Dockerfile 
+    env_file: 
+      - .env 
+    container_name: hotcrp_app 
+    restart: always 
+    expose: 
+      - "9000" 
+    depends_on: 
+      - db 
+    environment: 
+      PHP_MEMORY_LIMIT: 256M 
+    volumes: 
+      - ./docker/mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf 
+      - ./hotcrp_options.d:/var/www/html/conf/options.d/ 
+      - ./hotcrp_options.php:/var/www/html/conf/options.php 
+    networks: 
+    - hotcrp_net 
+  
+  nginx: 
+    image: nginx:alpine 
+    container_name: hotcrp_nginx 
+    ports: 
+      - "8080:80" 
+    volumes: 
+      - ./hotcrp:/var/www/html 
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf 
+    depends_on: 
+      - hotcrp 
+    networks: 
+      - hotcrp_net 
+
+volumes: 
+  db_data: 
+networks: 
+  hotcrp_net: {}
