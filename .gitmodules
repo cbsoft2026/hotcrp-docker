@@ -1,0 +1,3 @@
+[submodule "hotcrp"]
+	path = hotcrp
+	url = https://github.com/kohler/hotcrp.git
