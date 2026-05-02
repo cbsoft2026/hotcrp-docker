@@ -1,0 +1,6 @@
+[mariadb]
+skip-name-resolve
+host-cache-size = 128
+
+[client]
+skip-ssl = true

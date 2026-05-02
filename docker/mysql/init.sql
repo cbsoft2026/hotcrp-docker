@@ -1,0 +1,7 @@
+CREATE DATABASE IF NOT EXISTS `testconf`;
+
+CREATE USER IF NOT EXISTS 'hotcrp'@'%' IDENTIFIED BY 'hotcrp';
+
+GRANT ALL PRIVILEGES ON `testconf`.* TO 'hotcrp'@'%';
+
+FLUSH PRIVILEGES;
