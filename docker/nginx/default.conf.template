@@ -16,10 +16,10 @@ server {
     root /var/www/html;
     index index.php index.html;
 
-    location /testconf/ {
+    location ~ ^${HOTCRP_SITEPATH}/testconf(/.*)?$ {
         fastcgi_pass hotcrp:9000;
 
-        fastcgi_split_path_info ^(/testconf)(/.*)$;
+        fastcgi_split_path_info ^(${HOTCRP_SITEPATH}/testconf)(/.*)$;
 
         fastcgi_param SCRIPT_FILENAME /var/www/html/index.php;
         fastcgi_param PATH_INFO $fastcgi_path_info;
@@ -35,10 +35,10 @@ server {
     #
     # Example:
     #
-    # location /<confid>/ {
+    # location ~ ^${HOTCRP_SITEPATH}/<confid>(/.*)?$ {
     #     fastcgi_pass hotcrp:9000;
     #
-    #     fastcgi_split_path_info ^(/<confid>)(/.*)$;
+    #     fastcgi_split_path_info ^(${HOTCRP_SITEPATH}/<confid>)(/[\s\S]*)$;
     #
     #     fastcgi_param SCRIPT_FILENAME /var/www/html/index.php;
     #     fastcgi_param PATH_INFO $fastcgi_path_info;
@@ -47,18 +47,14 @@ server {
     # }
     #
 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location ~ \.php$ {
-        include fastcgi_params;
+    location ~ ^${HOTCRP_SITEPATH}(/.*)?$ {
         fastcgi_pass hotcrp:9000;
 
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    }
+        fastcgi_split_path_info ^(${HOTCRP_SITEPATH})(/.*)$;
 
-    location /stylesheets { try_files $uri =404; }
-    location /scripts { try_files $uri =404; }
-    location /images { try_files $uri =404; }
+        fastcgi_param SCRIPT_FILENAME /var/www/html/index.php;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+
+        include fastcgi_params;
+    }
 }

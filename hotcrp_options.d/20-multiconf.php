@@ -4,7 +4,7 @@
  * HotCRP multi-conference configuration
  */
 
-$confid = trim(Navigation::get()->base_path, "/");
+$confid = trim(str_replace(getenv("HOTCRP_SITEPATH"), "", Navigation::get()->base_path), "/");
 
 /**
  * Add one entry per conference
