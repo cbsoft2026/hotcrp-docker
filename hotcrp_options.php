@@ -25,3 +25,7 @@ $Opt["favicon"] = "https://cbsoft.sbc.org.br/2026/favicon.ico";
 
 $Opt["smartScoreCompare"] = true;
 $Opt["authorSharing"] = 0;
+
+$Opt["stylesheets"] = [
+  "stylesheets/style.cbsoft.css"
+];

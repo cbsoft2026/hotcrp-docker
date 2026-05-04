@@ -33,6 +33,7 @@ services:
       - ./docker/mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf 
       - ./hotcrp_options.d:/var/www/html/conf/options.d/ 
       - ./hotcrp_options.php:/var/www/html/conf/options.php 
+      - ./stylesheets/style.cbsoft.css:/var/www/html/stylesheets/style.cbsoft.css
     networks: 
     - hotcrp_net 
   
