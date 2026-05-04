@@ -10,7 +10,7 @@ $confid = trim(str_replace(getenv("HOTCRP_SITEPATH"), "", Navigation::get()->bas
  * Add one entry per conference
  */
 $names = [
-  "" => "Test Conference",
+  "" => "Latam SE School",
   "testconf" => "Test Conference",
   "latam-se-school" => "Latam SE School",
   // "<confid>" => "Example Conference Name",
@@ -26,7 +26,7 @@ $Opt["multiconferenceAnalyzer"] = [
   // "p /<confid> <confid>",
 ];
 
-$Opt["confid"] = $confid ?: "testconf";
+$Opt["confid"] = $confid ?: "latam-se-school";
 
 $Opt["shortName"] = ($names[$confid] ?? $confid) . " | CBSoft 2026";
 $Opt["longName"] = $names[$confid] ?? $confid;
