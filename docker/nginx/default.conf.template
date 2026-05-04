@@ -27,6 +27,17 @@ server {
         include fastcgi_params;
     }
 
+    location ~ ^${HOTCRP_SITEPATH}/latam-se-school(/.*)?$ {
+        fastcgi_pass hotcrp:9000;
+
+        fastcgi_split_path_info ^(${HOTCRP_SITEPATH}/latam-se-school)(/.*)$;
+
+        fastcgi_param SCRIPT_FILENAME /var/www/html/index.php;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+
+        include fastcgi_params;
+    }
+
     # ---------------------------------------------------------------------
     # TEMPLATE: additional conferences
     # ---------------------------------------------------------------------

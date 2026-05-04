@@ -11,6 +11,9 @@ CREATE USER IF NOT EXISTS 'hotcrp'@'%' IDENTIFIED BY 'hotcrp';
 CREATE DATABASE IF NOT EXISTS `testconf`;
 GRANT ALL PRIVILEGES ON `testconf`.* TO 'hotcrp'@'%';
 
+CREATE DATABASE IF NOT EXISTS `latam-se-school`;
+GRANT ALL PRIVILEGES ON `latam-se-school`.* TO 'hotcrp'@'%';
+
 --
 -- --------------------------------------------------------------------
 -- EXAMPLE (copy for each new conference)

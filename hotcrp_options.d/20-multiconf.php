@@ -12,6 +12,7 @@ $confid = trim(str_replace(getenv("HOTCRP_SITEPATH"), "", Navigation::get()->bas
 $names = [
   "" => "Test Conference",
   "testconf" => "Test Conference",
+  "latam-se-school" => "Latam SE School",
   // "<confid>" => "Example Conference Name",
 ];
 
@@ -21,6 +22,7 @@ $names = [
  */
 $Opt["multiconferenceAnalyzer"] = [
   "p /testconf testconf",
+  "p /latam-se-school latam-se-school",
   // "p /<confid> <confid>",
 ];
 
