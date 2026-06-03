@@ -46,4 +46,12 @@ Open in your browser: `http://localhost:8080/`.
 > [!NOTE]  
 > * Ensure the database container is healthy before running createdb.sh.
 
+# Restarting the stack
+
+To restart the application without affecting the database or persistent data:
+
+```bash
+docker compose up -d --build
+```
+
 [^1]: https://github.com/kohler/hotcrp/issues/390
