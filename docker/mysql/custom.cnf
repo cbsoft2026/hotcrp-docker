@@ -1,5 +1,5 @@
 [mariadb]
-skip-name-resolve
+disable-skip-name-resolve
 host-cache-size = 128
 
 [client]

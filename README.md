@@ -28,7 +28,7 @@ Build and start the application:
 docker compose up -d --build
 ```
 
-Wait for the database container to go up, and then create tables[^1]
+Wait for the database container to go up, and then create tables
 
 ```bash
 docker exec -it hotcrp_app \
@@ -37,7 +37,6 @@ docker exec -it hotcrp_app \
     --dbuser=<DB_USER>,<DB_PASS> \
     --user=root \
     --password=<DB_ROOT_PASSWORD> \
-    --grant-host=% \
     <confid>
 ```
 
@@ -53,5 +52,3 @@ To restart the application without affecting the database or persistent data:
 ```bash
 docker compose up -d --build
 ```
-
-[^1]: https://github.com/kohler/hotcrp/issues/390
